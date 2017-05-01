@@ -1,11 +1,13 @@
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 using namespace std;
 #include "../lib/dirreader.h"
 
 int main(int argc, char const* argv[])
 {
     //LaDirReader* pdir = LaDirReader::create_instatnce("/111");
-    LaDirReader* pdir = new LaDirReader("/111");
+    LaDirReader* pdir = new LaDirReader("/etc");
     vector<std::string>* entries;
     try
     {
@@ -21,9 +23,10 @@ int main(int argc, char const* argv[])
      //   cout<<"edddd"<<endl;
         cerr<<e.info<<endl;
     }
-    catch(...)
+    sort(entries->begin(), entries->end());
+    for(vector<string>::iterator it = entries->begin(); it != entries->end(); ++it)
     {
-        cerr<<"Error."<<endl;
+         cout<<*it<<'\t';
     }
     return 0;
 }
