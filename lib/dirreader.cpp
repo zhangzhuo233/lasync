@@ -6,7 +6,7 @@ using namespace std;
 
 LaDirReader::LaDirReader()
 {
-    path = "/tmp";
+    path = "etc";
     entrys = new vector<std::string>();
 }
 LaDirReader::LaDirReader(const char* path_str)
@@ -27,16 +27,12 @@ LaDirReader::~LaDirReader()
 vector<std::string>* LaDirReader::read_dir()
                 throw(LaDirOpenException, LaDirReadException)
 {
-    //cout<<"111111111111111111111111111111111111"<<endl;
     char buffer[MAXPATHLEN];
     char *rpath = NULL;
     rpath = realpath(path.c_str(), buffer);//if path is not exits, rpath will be NULL, this is a important problem
-    //cout<<"211111111111111111111111111111111111"<<endl;
     if(access(rpath, F_OK | R_OK))
     {
-    //cout<<"311111111111111111111111111111111111"<<endl;
         throw LaDirOpenException(path.c_str());
-    //cout<<"411111111111111111111111111111111111"<<endl;
     }
 
     DIR* dir;

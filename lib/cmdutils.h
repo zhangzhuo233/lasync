@@ -7,7 +7,7 @@ using namespace std;
 class LaCmdUtils
 {
     public:
-        static int parse_args(int argc, char** argv, char* args, int& cmd, std::string& dest);
+        static int parse_args(int argc, char** argv, const char* args, int& cmd, std::string& dest);
         static void usage();
 };
 

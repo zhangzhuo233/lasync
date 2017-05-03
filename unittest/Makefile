@@ -13,4 +13,4 @@ lib:
 	cd ../lib; $(MAKE)
 
 clean:
-	rm -fr $(OBJS) ../lib/*.o
+	rm -fr $(OBJS) ../lib/*.o Test-??????

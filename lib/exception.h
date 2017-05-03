@@ -4,7 +4,14 @@
 #include <string>
 using namespace std;
 
-class LaDirOpenException
+class LaException
+{
+    public:
+        virtual ~LaException(){}
+    public:
+        std::string info;
+};
+class LaDirOpenException : public LaException
 {
     public:
         LaDirOpenException(char* path);
@@ -15,11 +22,9 @@ class LaDirOpenException
         {
             return new LaDirOpenException(path);
         }
-    public:
-        std::string info;
 };
 
-class LaDirReadException
+class LaDirReadException: public LaException
 {
     public:
         LaDirReadException(char* path);
@@ -30,7 +35,54 @@ class LaDirReadException
         {
             return new LaDirReadException(path);
         }
-    public:
-        std::string info;
 };
+
+class LaFileNotFoundException: public LaException
+{
+    public:
+        LaFileNotFoundException(std::string path);
+        virtual ~LaFileNotFoundException(){}
+};
+
+class LaDirCanNotReadException: public LaException
+{
+    public:
+        LaDirCanNotReadException(std::string path);
+        virtual ~LaDirCanNotReadException(){}
+};
+
+class LaHardwareException: public LaException
+{
+    public:
+        LaHardwareException(std::string hwtype);
+};
+
+class LaWorkloadException: public LaException
+{
+    public:
+        LaWorkloadException();
+        virtual ~LaWorkloadException(){}
+};
+
+class LaFileCanNotAccessException: public LaException
+{
+    public:
+        LaFileCanNotAccessException();
+        virtual ~LaFileCanNotAccessException(){}
+};
+
+class LaKeyNotFoundException: public LaException
+{
+    public:
+        LaKeyNotFoundException(std::string key);
+        virtual ~LaKeyNotFoundException(){}
+};
+
+class LaDuplicateKeyException: public LaException
+{
+    public:
+        LaDuplicateKeyException(std::string key);
+        virtual ~LaDuplicateKeyException(){}
+};
+
 #endif

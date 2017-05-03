@@ -12,13 +12,13 @@
 #include "exception.h"
 #define MAXPATHLEN 1024
 
-class LaDirReader:public LaSingletonTemplateBase<LaDirReader>
+class LaDirReader
 {
     public:
         LaDirReader();
         LaDirReader(const char* path_str);
         LaDirReader(std::string path_str);
-        virtual ~LaDirReader();
+        ~LaDirReader();
     public:
         static LaDirReader* create_instatnce(std::string path)
         {

@@ -2,7 +2,7 @@
 #include "cmdutils.h"
 
 
-int LaCmdUtils::parse_args(int argc, char** argv, char* args, int& cmd, std::string& dest)
+int LaCmdUtils::parse_args(int argc, char** argv, const char* args, int& cmd, std::string& dest)
 {
     int opt = 0;
     while((opt = getopt(argc, argv, args)) != -1)
@@ -37,6 +37,6 @@ void LaCmdUtils::usage()
 {
     const char* usage = "\t-f:synchronize file\n\t-p:synchronize package\
                          \n\t-u:upgrade package\n\t-m:node list to do above \
-                         actions, if no -m all node will be synchronized\n";
+actions, if no -m all node will be synchronized\n";
     cerr << usage << endl;
 }

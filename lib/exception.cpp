@@ -5,26 +5,37 @@ using namespace std;
 
 LaDirOpenException::LaDirOpenException(char* path)
 {
-   // cout<<"aaaaaaaaaaaaaaaaaaaa"<<endl;
     std::string src_path(path);
-    //cout<<path<<endl;
-    //printf("path = %s\n",path);
-    //cout<<"aaaaddddddaaaaaaaaaaaaaaaa"<<endl;
     info = src_path + " Open fail.";
 }
+
 LaDirOpenException::LaDirOpenException(std::string path)
 {
-    //cout<<"baaaaaaaaaaaaaaaaaaa"<<endl;
     info = path + " Open fail.";
 }
+
 LaDirReadException::LaDirReadException(char* path)
 {
-    //cout<<"caaaaaaaaaaaaaaaaaaa"<<endl;
     std::string src_path(path);
     info = src_path + " Read fail.";
 }
+
 LaDirReadException::LaDirReadException(std::string path)
 {
-    //cout<<"daaaaaaaaaaaaaaaaaaa"<<endl;
     info = path + " Read fail.";
+}
+
+LaKeyNotFoundException::LaKeyNotFoundException(std::string key)
+{
+    info = key + "not found";
+}
+
+LaDuplicateKeyException::LaDuplicateKeyException(std::string key)
+{
+     info = key + "already exists";
+}
+
+LaFileNotFoundException::LaFileNotFoundException(std::string path)
+{
+    info = path + "not found";
 }

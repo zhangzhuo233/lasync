@@ -28,5 +28,7 @@ int main(int argc, char const* argv[])
     {
          cout<<*it<<'\t';
     }
+    delete pdir;
+    pdir = NULL;
     return 0;
 }
